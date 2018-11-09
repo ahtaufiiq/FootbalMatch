@@ -23,4 +23,6 @@ class FootballRepositoryImpl(private val footballRest: FootballRest) : FootballR
     override fun getNextMatch(id: String): Observable<Events> = footballRest.getNextmatch(id)
 
     override fun getTeams(id: String?): Observable<Teams> = footballRest.getTeam(id)
+
+    override fun getNews(category: String): Observable<ArticleNews> =footballRest.getNews(category)
 }

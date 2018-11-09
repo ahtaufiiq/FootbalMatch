@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:clipToPadding="false"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    >
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin_24">
+
+        <TextView
+            android:id="@+id/titleNews_detail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:text="Title"
+            android:transitionName="title"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/deskripsiNews_detail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="deskripsi"
+            android:layout_marginTop="@dimen/margin_16"
+            android:textSize="14sp"
+            android:textStyle="normal"
+            android:lineSpacingExtra="1sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/titleNews_detail" />
+
+        <Button
+            android:id="@+id/btn_read_all"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/side_nav_bar"
+            android:layout_marginTop="@dimen/margin_24"
+            android:text="@string/button_read_full_article"
+            app:layout_constraintTop_toBottomOf="@+id/deskripsiNews_detail" />
+
+    </android.support.constraint.ConstraintLayout>
+
+</android.support.v4.widget.NestedScrollView>
+

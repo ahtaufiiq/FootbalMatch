@@ -1,5 +1,6 @@
 package com.example.ahmad.footbalmatch.view.detail.detailTeam.player
 
+import android.util.Log
 import com.example.ahmad.footbalmatch.data.repository.FootballRepositoryImpl
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
@@ -10,9 +11,14 @@ class PlayerFragmentPresenter(private val mView: PlayerFragmentContract.View, pr
         compositeDisposable.add(footballRepositoryImpl.getAllPlayer(id)
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
-                .subscribe {
+                .subscribe ({
                     mView.setDataPlayer(it.player)
-                })
+                },
+                { error ->
+                    Log.e("Error", error.message)
+                }
+        )
+        )
     }
 
     private val compositeDisposable = CompositeDisposable()

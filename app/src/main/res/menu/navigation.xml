@@ -10,7 +10,10 @@
         android:id="@+id/navigation_next_match"
         android:icon="@drawable/ic_next_match"
         android:title="Teams" />
-
+    <item
+        android:id="@+id/navigation_news"
+        android:icon="@drawable/ic_favorites"
+        android:title="News" />
     <item
         android:id="@+id/navigation_favorite"
         android:icon="@drawable/ic_favorites"

@@ -1,5 +1,6 @@
 package com.example.ahmad.footbalmatch.view.detail.detailMatch
 
+import android.util.Log
 import com.example.ahmad.footbalmatch.data.repository.FootballRepositoryImpl
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
@@ -13,9 +14,14 @@ class DetailPresenter(private val mView: DetailContract.View, private val footba
         compositeDisposable.add(footballRepositoryImpl.getTeams(id)
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
-                .subscribe {
+                .subscribe({
                     mView.setLogoHomeTeam(it.teams[0])
-                })
+                },
+                        { error ->
+                            Log.e("Error", error.message)
+                        }
+                )
+        )
     }
 
 
@@ -23,9 +29,14 @@ class DetailPresenter(private val mView: DetailContract.View, private val footba
         compositeDisposable.add(footballRepositoryImpl.getTeams(id)
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
-                .subscribe {
+                .subscribe({
                     mView.setLogoAwayTeam(it.teams[0])
-                })
+                },
+                { error ->
+                    Log.e("Error", error.message)
+                }
+                )
+        )
     }
 
     override fun getEvent(id: String) {
@@ -33,9 +44,14 @@ class DetailPresenter(private val mView: DetailContract.View, private val footba
         compositeDisposable.add(footballRepositoryImpl.getEventById(id)
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
-                .subscribe {
+                .subscribe ({
                     mView.setDataEvent(it.events[0])
-                })
+                },
+                { error ->
+                    Log.e("Error", error.message)
+                }
+        )
+        )
     }
 
 

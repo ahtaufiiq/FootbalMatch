@@ -6,6 +6,7 @@ import com.example.ahmad.footbalmatch.R
 import com.example.ahmad.footbalmatch.R.id.*
 import com.example.ahmad.footbalmatch.view.main.favorite.FavoriteFragment
 import com.example.ahmad.footbalmatch.view.main.match.MatchesFragment
+import com.example.ahmad.footbalmatch.view.main.news.NewsFragment
 import com.example.ahmad.footbalmatch.view.main.team.TeamFragment
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -30,6 +31,11 @@ class MainActivity : AppCompatActivity() {
                 }
                 navigation_last_match -> {
                     loadLastMatchFragment(savedInstanceState)
+                    supportActionBar?.elevation=0F
+
+                }
+                navigation_news -> {
+                    loadNewsFragment(savedInstanceState)
                     supportActionBar?.elevation=0F
 
                 }
@@ -64,6 +70,14 @@ class MainActivity : AppCompatActivity() {
             supportFragmentManager
                     .beginTransaction()
                     .replace(R.id.main_container, FavoriteFragment(), FavoriteFragment::class.java.simpleName)
+                    .commit()
+        }
+    }
+    private fun loadNewsFragment(savedInstanceState: Bundle?) {
+        if (savedInstanceState == null) {
+            supportFragmentManager
+                    .beginTransaction()
+                    .replace(R.id.main_container, NewsFragment(), NewsFragment::class.java.simpleName)
                     .commit()
         }
     }

@@ -15,6 +15,7 @@
     <string name="txt_date">Sen, 03 Mar 2018</string>
     <string name="txt_weight">Weight (Kg)</string>
     <string name="txt_height">Height (M)</string>
+    <string name="button_read_full_article">Read Full Article</string>
 
     <array name="league">
         <item>English Premier League</item>

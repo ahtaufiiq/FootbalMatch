@@ -7,30 +7,33 @@ import retrofit2.http.Query
 
 interface FootballRest {
 
-    @GET("eventspastleague.php")
+    @GET("eventPast.php")
     fun getLastmatch(@Query("id") id: String): Observable<Events>
 
-    @GET("eventsnextleague.php")
+    @GET("eventNext.php")
     fun getNextmatch(@Query("id") id: String): Observable<Events>
 
-    @GET("lookupteam.php")
+    @GET("lookupTeam.php")
     fun getTeam(@Query("id") id: String?): Observable<Teams>
 
-    @GET("lookupevent.php")
+    @GET("lookupEvent.php")
     fun getEventById(@Query("id") id: String): Observable<Events>
 
-    @GET("searchevents.php")
+    @GET("searchEvent.php")
     fun searchEvent(@Query("e") query: String?): Observable<SearchedMatches>
 
-    @GET("searchteams.php")
+    @GET("searchTeam.php")
     fun searchTeams(@Query("t") id: String): Observable<Teams>
 
-    @GET("search_all_teams.php")
+    @GET("searchAllTeam.php")
     fun getAllTeam(@Query("l") id: String): Observable<Teams>
 
-    @GET("lookup_all_players.php")
+    @GET("getAllPlayer.php")
     fun getAllPlayers(@Query("id") id: String?): Observable<FootballPlayer>
 
-    @GET("lookupplayer.php")
+    @GET("getPlayerDetail.php")
     fun getPlayerDetail(@Query("id") id: String?): Observable<PlayerDetail>
+
+    @GET("readNews.php")
+    fun getNews(@Query("category") id: String?): Observable<ArticleNews>
 }

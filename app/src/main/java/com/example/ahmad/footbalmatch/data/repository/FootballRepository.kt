@@ -22,4 +22,6 @@ interface FootballRepository {
     fun getAllPlayer(id: String): Observable<FootballPlayer>
 
     fun getPlayer(id: String): Observable<PlayerDetail>
+
+    fun getNews(category: String): Observable<ArticleNews>
 }
