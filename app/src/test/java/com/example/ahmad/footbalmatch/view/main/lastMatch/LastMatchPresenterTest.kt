@@ -49,7 +49,7 @@ class LastMatchPresenterTest {
 
     @Test
     fun getLastMatch_shouldSuccess() {
-        mPresenter.getMatch()
+        mPresenter.getMatch("4328")
         Thread.sleep(2000)
         Mockito.verify(mView).setDataMatch(event)
     }

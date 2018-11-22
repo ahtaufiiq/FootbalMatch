@@ -43,7 +43,7 @@ class NewsFragment : Fragment(),NewsContract.View {
             setHasFixedSize(true)
             adapter = NewsAdapter(matchLists,context)
         }
-        mPresenter.getNews("technology")
+        mPresenter.getNews("arsenal")
     }
 
     override fun setData(matchList: List<News>) {

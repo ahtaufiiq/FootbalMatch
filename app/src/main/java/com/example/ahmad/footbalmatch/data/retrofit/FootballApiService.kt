@@ -9,7 +9,7 @@ class FootballApiService {
     companion object {
         fun getClient(): Retrofit {
             return Retrofit.Builder()
-                    .baseUrl("https://eai-thesportdb.herokuapp.com/")
+                    .baseUrl("https://eai-ptk.herokuapp.com/")
                     .addConverterFactory(GsonConverterFactory.create())
                     .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                     .build()

@@ -34,6 +34,6 @@ interface FootballRest {
     @GET("getPlayerDetail.php")
     fun getPlayerDetail(@Query("id") id: String?): Observable<PlayerDetail>
 
-    @GET("readNews.php")
-    fun getNews(@Query("category") id: String?): Observable<ArticleNews>
+    @GET("getFavNews.php")
+    fun getNews(@Query("q") id: String?): Observable<ArticleNews>
 }

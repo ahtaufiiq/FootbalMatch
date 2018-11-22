@@ -23,14 +23,21 @@ import kotlinx.android.synthetic.main.fragment_match.*
 
 class LastMatchFragment : Fragment(), MainContract.View {
 
+    override fun setDataMatch(matchList: List<Event>) {
 
+        if (matchList.isNotEmpty()) {
+            matchLists.clear()
+            matchLists.addAll(matchList)
+            rv_match.adapter.notifyDataSetChanged()
+        }
+
+    }
     private var matchLists: MutableList<Event> = mutableListOf()
     lateinit var mPresenter: LastMatchPresenter
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
 
         val view = inflater.inflate(R.layout.fragment_match, container, false)
-
         mPresenter = LastMatchPresenter(this, FootballRepositoryImpl(FootballApiService.getClient().create(FootballRest::class.java)))
         return view
     }
@@ -53,15 +60,7 @@ class LastMatchFragment : Fragment(), MainContract.View {
         }
     }
 
-    override fun setDataMatch(matchList: List<Event>) {
 
-        if (matchList.isNotEmpty()) {
-            matchLists.clear()
-            matchLists.addAll(matchList)
-            rv_match.adapter.notifyDataSetChanged()
-        }
-
-    }
 
 
 }

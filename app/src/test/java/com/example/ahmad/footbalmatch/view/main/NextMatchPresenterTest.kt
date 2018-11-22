@@ -48,7 +48,7 @@ class NextMatchPresenterTest {
 
     @Test
     fun getNextMatch_shouldSuccess() {
-        mPresenter.getMatch()
+        mPresenter.getMatch("4328")
         Thread.sleep(2000)
         verify(mView).setDataMatch(event)
     }

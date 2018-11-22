@@ -1,13 +1,16 @@
 package com.example.ahmad.footbalmatch.view.main
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import com.example.ahmad.footbalmatch.R
 import com.example.ahmad.footbalmatch.R.id.*
+import com.example.ahmad.footbalmatch.view.authentication.LoginActivity
 import com.example.ahmad.footbalmatch.view.main.favorite.FavoriteFragment
 import com.example.ahmad.footbalmatch.view.main.match.MatchesFragment
 import com.example.ahmad.footbalmatch.view.main.news.NewsFragment
 import com.example.ahmad.footbalmatch.view.main.team.TeamFragment
+import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -80,5 +83,12 @@ class MainActivity : AppCompatActivity() {
                     .replace(R.id.main_container, NewsFragment(), NewsFragment::class.java.simpleName)
                     .commit()
         }
+    }
+
+    override fun onStart() {
+        if (FirebaseAuth.getInstance().currentUser == null) {
+            startActivity(Intent(this,LoginActivity::class.java))
+        }
+        super.onStart()
     }
 }
