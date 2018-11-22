@@ -14,12 +14,17 @@ import android.widget.SpinnerAdapter
 import com.example.ahmad.footbalmatch.R
 import com.example.ahmad.footbalmatch.R.array.id_league
 import com.example.ahmad.footbalmatch.R.array.league
+import com.example.ahmad.footbalmatch.data.local.Favorite
+import com.example.ahmad.footbalmatch.data.local.FavoriteTeam
+import com.example.ahmad.footbalmatch.data.local.database
 import com.example.ahmad.footbalmatch.data.repository.FootballRepositoryImpl
 import com.example.ahmad.footbalmatch.data.response.Team
 import com.example.ahmad.footbalmatch.data.retrofit.FootballApiService
 import com.example.ahmad.footbalmatch.data.retrofit.FootballRest
 import kotlinx.android.synthetic.main.fragment_team.*
-import org.jetbrains.anko.support.v4.ctx
+import kotlinx.coroutines.experimental.selects.select
+import org.jetbrains.anko.db.classParser
+import org.jetbrains.anko.db.select
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -49,6 +54,7 @@ class TeamFragment : Fragment(), TeamContract.View {
         val view = inflater.inflate(R.layout.fragment_team, container, false)
         mPresenter = TeamPresenter(this, FootballRepositoryImpl(FootballApiService.getClient().create(FootballRest::class.java)))
         setHasOptionsMenu(true)
+        mPresenter.searchTeam("")
         return view
     }
 
@@ -56,35 +62,37 @@ class TeamFragment : Fragment(), TeamContract.View {
         super.onActivityCreated(savedInstanceState)
         rv_team.layoutManager = LinearLayoutManager(context)
         rv_team.adapter = TeamAdapter(matchLists, context)
-        val spinnerItems = resources.getStringArray(league)
-        val spinnerAdapter = ArrayAdapter(context, android.R.layout.simple_spinner_dropdown_item, spinnerItems)
-        spinner_team.adapter = spinnerAdapter
-        spinner_team.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onItemSelected(parent: AdapterView<*>, view: View, position: Int, id: Long) {
-                mPresenter.getAllTeam(spinnerItems[position])
-            }
-
-            override fun onNothingSelected(parent: AdapterView<*>) {}
-        }
+//        val spinnerItems = resources.getStringArray(league)
+//        val spinnerAdapter = ArrayAdapter(context, android.R.layout.simple_spinner_dropdown_item, spinnerItems)
+//        spinner_team.adapter = spinnerAdapter
+//        spinner_team.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+//            override fun onItemSelected(parent: AdapterView<*>, view: View, position: Int, id: Long) {
+////                mPresenter.getAllTeam(spinnerItems[position])
+//            }
+//
+//            override fun onNothingSelected(parent: AdapterView<*>) {}
+//        }
     }
 
-    override fun onCreateOptionsMenu(menu: Menu?, inflater: MenuInflater?) {
-        super.onCreateOptionsMenu(menu, inflater)
-        inflater?.inflate(R.menu.menu_search, menu)
-        val searchView = menu?.findItem(R.id.actionSearch)?.actionView as SearchView?
-        searchView?.queryHint = "Search Team"
 
-        searchView?.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
-            override fun onQueryTextSubmit(query: String): Boolean {
-                return false
-            }
 
-            override fun onQueryTextChange(query: String): Boolean {
-                mPresenter.searchTeam(query)
-                return false
-            }
-        })
+     override fun onCreateOptionsMenu(menu: Menu?, inflater: MenuInflater?) {
+         super.onCreateOptionsMenu(menu, inflater)
+         inflater?.inflate(R.menu.menu_search, menu)
+         val searchView = menu?.findItem(R.id.actionSearch)?.actionView as SearchView?
+         searchView?.queryHint = "Search Team"
 
-    }
+         searchView?.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+             override fun onQueryTextSubmit(query: String): Boolean {
+                 return false
+             }
+
+             override fun onQueryTextChange(query: String): Boolean {
+                 mPresenter.searchTeam(query)
+                 return false
+             }
+         })
+
+     }
 
 }

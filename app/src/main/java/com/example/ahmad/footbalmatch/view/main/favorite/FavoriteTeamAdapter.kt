@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import com.bumptech.glide.Glide
 import com.example.ahmad.footbalmatch.R
 import com.example.ahmad.footbalmatch.data.local.FavoriteTeam
-import com.example.ahmad.footbalmatch.view.detail.detailMatch.DetailTeamActivity
+import com.example.ahmad.footbalmatch.view.detail.detailTeam.DetailTeamActivity
 import kotlinx.android.synthetic.main.card_team.view.*
 import org.jetbrains.anko.startActivity
 

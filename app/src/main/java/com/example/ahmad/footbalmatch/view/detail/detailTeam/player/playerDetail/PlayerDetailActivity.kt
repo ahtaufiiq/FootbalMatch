@@ -9,7 +9,7 @@ import com.example.ahmad.footbalmatch.data.repository.FootballRepositoryImpl
 import com.example.ahmad.footbalmatch.data.response.Player
 import com.example.ahmad.footbalmatch.data.retrofit.FootballApiService
 import com.example.ahmad.footbalmatch.data.retrofit.FootballRest
-import com.example.ahmad.footbalmatch.view.detail.detailMatch.DetailTeamActivity
+import com.example.ahmad.footbalmatch.view.detail.detailTeam.DetailTeamActivity
 import kotlinx.android.synthetic.main.activity_player_detail.*
 
 class PlayerDetailActivity : AppCompatActivity() ,PlayerDetailContract.View{
@@ -34,7 +34,7 @@ class PlayerDetailActivity : AppCompatActivity() ,PlayerDetailContract.View{
 
     override fun onBackPressed() {
         super.onBackPressed()
-        val intents= Intent(this,DetailTeamActivity::class.java)
+        val intents= Intent(this, DetailTeamActivity::class.java)
         intents.putExtra("event",player.idTeam)
         startActivity(intents)
     }
