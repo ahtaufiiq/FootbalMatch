@@ -1,4 +1,4 @@
-package com.example.ahmad.footbalmatch.view.detail.detailMatch
+package com.example.ahmad.footbalmatch.view.detail.detailTeam
 
 import com.example.ahmad.footbalmatch.data.response.Player
 import com.example.ahmad.footbalmatch.data.response.Team

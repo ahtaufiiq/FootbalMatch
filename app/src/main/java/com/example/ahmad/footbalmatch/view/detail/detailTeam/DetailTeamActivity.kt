@@ -1,4 +1,4 @@
-package com.example.ahmad.footbalmatch.view.detail.detailMatch
+package com.example.ahmad.footbalmatch.view.detail.detailTeam
 
 import android.database.sqlite.SQLiteConstraintException
 import android.os.Bundle
@@ -23,6 +23,7 @@ import com.example.ahmad.footbalmatch.data.repository.FootballRepositoryImpl
 import com.example.ahmad.footbalmatch.data.response.Team
 import com.example.ahmad.footbalmatch.data.retrofit.FootballApiService
 import com.example.ahmad.footbalmatch.data.retrofit.FootballRest
+import com.example.ahmad.footbalmatch.view.detail.detailMatch.DetailTeamPresenter
 import com.example.ahmad.footbalmatch.view.detail.detailTeam.overviewTeam.OverviewFragment
 import com.example.ahmad.footbalmatch.view.detail.detailTeam.player.PlayerFragment
 import kotlinx.android.synthetic.main.activity_team_detail.*

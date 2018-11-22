@@ -18,6 +18,7 @@ class FavoriteTeamFragment : Fragment() {
 
     private var favorites: MutableList<FavoriteTeam> = mutableListOf()
     private lateinit var adapter: FavoriteTeamAdapter
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_favorite, container, false)
@@ -33,9 +34,13 @@ class FavoriteTeamFragment : Fragment() {
         context?.database?.use {
             val result = select(Favorite.TABLE_FAVORITE_TEAM)
             val favorite = result.parseList(classParser<FavoriteTeam>())
+
+
             favorites.clear()
 
-            favorites.addAll(favorite)
+            if (!favorite.isEmpty()){
+                favorites.add(favorite[favorite.size-1])
+            }
 
             adapter = FavoriteTeamAdapter(favorites,context)
             rv_favorite.layoutManager = LinearLayoutManager(context)

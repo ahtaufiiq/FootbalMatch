@@ -23,7 +23,7 @@
             android:label="Match Detail"
             android:parentActivityName=".view.main.MainActivity" />
         <activity
-            android:name=".view.detail.detailMatch.DetailTeamActivity"
+            android:name=".view.detail.detailTeam.DetailTeamActivity"
             android:label="Team Detail"
             android:parentActivityName=".view.main.MainActivity" />
         <activity android:name=".view.main.search.SearchMatchActivity" />
